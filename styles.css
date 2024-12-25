@@ -1,0 +1,11 @@
+#gameBoard {
+  border: black 1px solid;
+  
+}
+
+.tile {
+  text-align: center;
+  border: black 1px solid;
+  height: 100px;
+  width: 100px;
+}
