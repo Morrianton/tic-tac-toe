@@ -31,6 +31,7 @@ function resetPlay() {
 function resetGame() {
   clearTimeout(innerTimeout);
   clearTimeout(outerTimeout);
+  deactivateBoard();
 
   if (!controls.playButton.hidden) {
     controls.playButton.hidden = true;
@@ -43,9 +44,6 @@ function resetGame() {
   
   outerTimeout = setTimeout(() => {
     message.innerHTML = `Player ${activePlayer.id}'s turn.`;
-    innerTimeout = setTimeout(() => {
-      message.innerHTML = '';
-    }, 1500);
   }, 1500);
 }
 
@@ -58,19 +56,14 @@ function removePreview(tile) {
 }
 
 function playAgain() {
+  clearTimeout(outerTimeout);
+
   hasFinished = false;
   controls.playButton.hidden = true;
-  message.innerHTML = '';
   resetBoard();
   resetTileClaims();
   swapPlayers();
-
-  setTimeout(() => {
-    message.innerHTML = `Player ${activePlayer.id}'s turn.`;
-    setTimeout(() => {
-      message.innerHTML = '';
-    }, 1500);
-  }, 1500);
+  message.innerHTML = `Player ${activePlayer.id}'s turn.`;
 }
 
 function makePlay() {
@@ -112,6 +105,7 @@ function checkForWinner() {
   } else {
     if (activeTiles.length) {
       swapPlayers();
+      message.innerHTML = `Player ${activePlayer.id}'s turn.`
     } else {
       declareResults('It\'s a Cat\'s Game!');
     }
@@ -144,11 +138,8 @@ function processTile(tileNumber) {
 
 function declareResults(declaration) {
   message.innerHTML = declaration;
-      setTimeout(() => {
-        message.innerHTML = `Play again?`;
-      }, 3000);
-      deactivateBoard();
-      hasFinished = true;
-      controls.playButton.innerHTML = 'Play';
-      controls.playButton.hidden = false;
+  deactivateBoard();
+  hasFinished = true;
+  controls.playButton.innerHTML = 'Play Again';
+  controls.playButton.hidden = false;
 }
