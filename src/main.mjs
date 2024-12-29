@@ -79,15 +79,12 @@ function makePlay() {
   
   const tileNumber = this.getAttribute("tilenumber");
   const subjectTile = activeTiles.find(tile => tile.id === Number(tileNumber));
-
   
-  if (subjectTile.isActive) {
+  if (subjectTile && subjectTile.isActive) {
     const imgTag = document.createElement("img");
     imgTag.setAttribute("id", tileNumber);
     imgTag.setAttribute("src", activePlayer.symbolSrc);
     this.append(imgTag);
-    // this.innerHTML = activePlayer.symbol;
-    console.log(activePlayer.symbol)
     processTile(tileNumber);
 
     if (controls.playButton.hidden && activeTiles.length < 9) {
