@@ -11,7 +11,6 @@ const message = document.getElementById("message");
 let activeTiles = new Array(...tiles);
 let activePlayer = players[0];
 let hasFinished = false;
-let hasStarted = false;
 let inactivePlayer = players[1]
 let outerTimeout;
 let innerTimeout;
@@ -88,7 +87,6 @@ function makePlay() {
     processTile(tileNumber);
 
     if (controls.playButton.hidden && activeTiles.length < 9) {
-      hasStarted = true;
       controls.playButton.innerHTML = 'Reset';
       controls.playButton.hidden = false;
     }
