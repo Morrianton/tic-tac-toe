@@ -18,7 +18,14 @@ function loadTiles() {
 }
 
 function loadPlayers() {
-  return new Array(new Player(1, 'x'), new Player(2, 'o'));
+  const imgTag = document.createElement("img");
+  imgTag.setAttribute("src", "./src/assets/X.svg");
+  imgTag.setAttribute("src", "./src/assets/X.svg");
+
+  return new Array(
+    new Player(1, "./src/assets/X.svg"),
+    new Player(2, "./src/assets/O.svg"),
+  );
 }
 
 export default function loadElements() {

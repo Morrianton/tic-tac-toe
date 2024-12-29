@@ -82,7 +82,12 @@ function makePlay() {
 
   
   if (subjectTile.isActive) {
-    this.innerHTML = activePlayer.symbol;
+    const imgTag = document.createElement("img");
+    imgTag.setAttribute("id", tileNumber);
+    imgTag.setAttribute("src", activePlayer.symbolSrc);
+    this.append(imgTag);
+    // this.innerHTML = activePlayer.symbol;
+    console.log(activePlayer.symbol)
     processTile(tileNumber);
 
     if (controls.playButton.hidden && activeTiles.length < 9) {
